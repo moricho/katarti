@@ -17,7 +17,7 @@ type CacheConfig struct {
 // Config represents application config.
 type Config struct {
 	Xds   XdsConfig
-	Redis CacheConfig
+	Cache CacheConfig
 }
 
 // New return Config struct.
@@ -25,12 +25,12 @@ func New() (Config, error) {
 	// xDS configuration
 	xdsConfig := XdsConfig{Addr: os.Getenv("XDS_ADDR")}
 
-	// redis configuration
-	redisConf := RedisConfig{Addr: os.Getenv("REDIS_ADDR")}
+	// cache configuration
+	cacheConf := CacheConfig{Addr: os.Getenv("CACHE_ADDR")}
 
 	conf := Config{
 		Xds:   xdsConfig,
-		Redis: redisConf,
+		Cache: cacheConf,
 	}
 	return conf, nil
 }
